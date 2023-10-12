@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>International telephone input</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" href="styles.css" />
+   <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+   />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+ </head>
+  <style>
+    *{
+      padding: 0;
+
+    }
+    body{
+      background: #F2F9FF;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font: 'Plus Jakarta Display', sans-serif;
+      font-family: 'Plus Jakarta Display', sans-serif;
+
+    }
+    .bigger-container{
+      width: 726px;
+      height: 451px;
+      flex-shrink: 0;
+      padding-left: 50px;
+      padding-top: 50px;
+      padding-left: 50px;
+      background-color: white;
+      
+    }
+    
+    
+    .stat-container{
+      width: 630px;
+      height: 58px;
+      top: 103px;
+      left: 45px;
+      border-bottom: 0.2px solid rgb(221, 218, 218);
+    }
+
+    .logo{
+      width: 101.11px;
+      height: 20px;
+      top: 45px;
+      left: 45px;
+      margin-bottom: 50px;
+
+    }
+    
+    .mega-div{
+      background-color: #0D6EFD;
+      width: 80%;
+      height: 1px;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      align-items: center;
+      width: 505px;
+      height: 1px;
+    }
+    .first-dot{
+      width: 10px;
+      height: 10px;
+      background-color: #0D6EFD;
+      border-radius: 5px;
+    }
+    .second-dot{
+      width: 10px;
+      height: 10px;
+      background-color: #0D6EFD;
+      border-radius: 5px;
+    }
+    label{
+      display: block;
+      text-align: center;
+      
+    }
+    .first{
+      
+      top: -5px;
+      left: 0
+    }
+    .second{
+      
+      right: 0;
+      top: -5px;
+    }
+    
+    .temp-div{
+      width: 636px;
+      height: 58px;
+      border-radius: 4px;
+      background: #F2F9FF;
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; 
+      position: relative;
+
+    }
+
+    .temp-div p{
+      color: #282828B2;
+
+    }
+
+    #phone{
+      width: 418px;
+      height: 51px;
+      gap: 10px;
+      border: 1px solid #E7E7E7;
+      border-radius: 5px;
+    }
+    input:focus{
+      outline: none;
+    }
+
+    .btn{
+      width: 208px;
+      height: 51px;
+      top: 345px;
+      left: 473px;
+      padding: 12px, 22px, 12px, 22px;
+      border-radius: 4.71px;
+      gap: 12px;
+      color: white;
+      border: none;
+      background: #0D6EFD;
+      font: 'Plus Jakarta Display', sans-serif;
+      font-family: 'Plus Jakarta Display', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 21px;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .container{
+      margin-top: 30px;
+    }
+    .close-button {
+      cursor: pointer;
+    }
+    h2{
+      letter-spacing: -1px
+    }
+    p{
+        font-family: Plus Jakarta Display;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: -0.03em;
+        text-align: left;
+
+    }
+  </style>
+
+ <body>
+
+
+
+  <div class="bigger-container">
+    <img src="./assets/Hauzisha.png" class="logo" alt="">
+    <div class="stat-container">
+      <div class="mega-div">
+  
+        <div class="first">
+          <label for="first-dot">account info</label>
+          <div class="first-dot"></div>
+        </div>
+  
+        <div class="second">
+          <label for="second-dot">phone verification</label>
+          <div class="second-dot"></div>
+        </div>
+        
+      </div>
+    </div>
+
+
+    <h2 style="font-family: 'Plus Jakarta Display', sans-serif;">Confirm Phone Number</h2>
+    <div class="temp-div" id="temp-div">
+      <span class="close-button" id="close-button">&times;</span>
+      <p style="font-family: 'Plus Jakarta Display', sans-serif;">for us to be sure you never miss any buyer or tenants request. verify your phone number</p>
+    </div>
+    
+    <div class="container">
+      <form id="login" onsubmit="process(event)">
+        <input id="phone" type="tel" name="phone" />
+        <input type="submit" class="btn" value="Verify Phone Number" />
+      </form>
+    </div>
+
+  </div>
+  
+   
+ </body>
+ <script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+     utilsScript:
+       "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+   });
+
+   document.getElementById("close-button").addEventListener("click", function() {
+            document.getElementById("temp-div").style.display = "none";
+        });
+
+        // Show the div when the page loads (you can remove this if you want to show it on some other event)
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("temp-div").style.display = "flex";
+        });
+
+ </script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your existing meta tags and stylesheets here -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.min.css">
+    
+</head>
+<body class="bg-gray-200 flex justify-center items-center h-screen" >
+    <!-- Your existing HTML content -->
+    <div class="w-100 h-200 rounded-md bg-white-100 p-9 shadow-custom-box-shadow" style="background-color: white;">
+        <p class="font-bold text-lg tracking-tighter">Confirm or Update your Contact Details</p>
+        <form class="mt-10" id="login" onsubmit="process(event)">
+
+            <div class="flex flex-col items-end">
+                <div class="">
+                    <label class="mr-5 text-gray-700" for="your_name">Your Name:</label>
+                    <input type="text" name="your_name" placeholder="Type In Your Name" id="your_name" class="w-96 focus:outline-none flex-grow p-2 border border-grey-400 rounded-l-md">
+                </div>
+    
+                <div id="phone-input" class="mt-5">
+                    <label class="mr-5 text-gray-700" for="phone">Phone Number:</label>
+                    <input type="tel" placeholder="712345678" class="w-96  focus:outline-none flex-grow p-2 border border-grey-400 rounded-l-md" name="phone" id="phone">
+                </div>
+                <button class="bg-blue-600 text-white font-bold w-52 h-14 px-4 py-2 rounded-md mt-5 hover:bg-blue-700 transition-colors">Continue</button>
+            </div>
+            
+    </div>
+    </form>
+</body>
+    <!-- Include the JavaScript files -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.7.26/libphonenumber-js.min.js"></script>
+    <script src="your-custom-script.js"></script>
+
+    <script>
+        $(document).ready(function() {
+  // Initialize the country code dropdown
+        var input = document.querySelector("#phone");
+        var iti = window.intlTelInput(input, {
+            preferredCountries: ["ke", "ca", "gb"], // Add preferred countries
+            separateDialCode: true,
+        });
+
+        // Handle form submission
+        document.querySelector("#login").onsubmit = function(event) {
+            event.preventDefault();
+
+            // Get the selected country code and the formatted phone number
+            var selectedCountry = iti.getSelectedCountryData();
+            var phoneNumber = iti.getNumber();
+
+            // You can use the selectedCountry and phoneNumber values as needed
+            console.log("Selected Country:", selectedCountry.name);
+            console.log("Formatted Phone Number:", phoneNumber);
+        };
+        });
+
+    </script>
+    <!-- Your existing HTML content -->
+
+</html>
